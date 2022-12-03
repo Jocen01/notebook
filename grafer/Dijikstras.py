@@ -1,7 +1,7 @@
 from heapq import heappush, heappop
 # s : startNod
 #g: [[(to_node,wight), ... ] , ...]
-INF = 10**9
+INF = 10**18
 
 
 def dijkstra(s, T, G):
