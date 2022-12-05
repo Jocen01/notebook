@@ -56,3 +56,38 @@ def getLongestPathDAG(DAG, graph):
             f = longest
             FR = i
     return path, f, FR
+
+from collections import defaultdict 
+class graph: #snabbare alternativ närman ska göra topsort på hela grafen
+    
+    def __init__(self, vertices):
+        self.adjacencyList = defaultdict(list) 
+        self.Vertices = vertices  # No. of vertices
+    # function to add an edge to adjacencyList
+    def createEdge(self, u, v):
+        self.adjacencyList[u].append(v)
+    # The function to do Topological Sort.
+    def topologicalSort(self):
+        total_indegree = [0]*(self.Vertices)
+        for i in self.adjacencyList:
+            for j in self.adjacencyList[i]:
+                total_indegree[j] += 1
+        queue = []
+        for i in range(self.Vertices):
+            if total_indegree[i] == 0:
+                queue.append(i)
+        visited_node = 0
+        order = []
+        while queue:
+            u = queue.pop(0)
+            order.append(u)
+            for i in self.adjacencyList[u]:
+                total_indegree[i] -= 1
+
+                if total_indegree[i] == 0:
+                    queue.append(i)
+            visited_node += 1
+        if visited_node != self.Vertices:
+            return []
+        else:
+            return order
