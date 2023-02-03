@@ -29,3 +29,16 @@ for a in A:
         print("NO")
         exit()
 print("YES")
+
+def primesive(n):
+    sive = [1 for _ in range(n*11)]
+    sive[0] = 0
+    sive[1] = 0
+    primes = []
+    for i,p in enumerate(sive):
+        if p == 1:
+            primes.append(i)
+            for j in range(i,n*10,i):
+                sive[j] = 0
+    return primes
+    
