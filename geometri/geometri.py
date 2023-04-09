@@ -2,11 +2,16 @@
 import math
 
 
-def linje(p1,p2):
-    a = -p2[1] - p1[1]
-    b = p2[0] - p1[0]
-    c = p1[0]*p2[1] - p1[1]*p2[0]
-    return (a,b,c)
+#def linje(p1,p2):
+#    a = -p2[1] - p1[1]
+#    b = p2[0] - p1[0]
+#    c = p1[0]*p2[1] - p1[1]*p2[0]
+#    return (a,b,c)
+
+def pts2line(p, q):
+    return (-q[1] + p[1],
+          q[0] - p[0],
+          p[0]*q[1] - p[1]*q[0])
 
 #GCD
 def GCD(a, b):
@@ -61,3 +66,47 @@ def perimeter(points):
         summ += math.sqrt(math.pow(pre[0]-p[0],2)+math.pow(pre[1]-p[1],2))
         pre = p
     return summ
+
+def point_in_polygon(P, points):# 0 -> outside, 1 -> inside, 2 -> on the edge
+    import math        
+
+    def pts2line(p, q):
+        return (-q[1] + p[1],
+            q[0] - p[0],
+            p[0]*q[1] - p[1]*q[0])
+    
+    def cross(a, b):
+        c = [a[1]*b[2] - a[2]*b[1],
+            a[2]*b[0] - a[0]*b[2],
+            a[0]*b[1] - a[1]*b[0]]
+        return c
+    
+    def distl(l, p):
+        return (abs(l[0]*p[0] + l[1]*p[1] + l[2])
+        /math.hypot(l[0], l[1]))
+    
+    crossings = 0
+    V = [743,1327] # direction of ray with origin p
+    # the purpose of the next segment is to make sure the ray doesn't pass trou any points. ae, passing trou points breaks the algoritm
+    line = pts2line(P,[P[0]+V[0],P[1]+V[1]])
+    if [1 for p1 in points if p1 == P]: return 2
+    while [1 for p in points if distl(line, p) == 0]: 
+        V = [V[0]+1,V[1]+1] #generates a line with no points on the polygon on it
+        line = pts2line(P,[P[0]+V[0],P[1]+V[1]])
+    
+    crosss = cross(P+[1],[V[0],V[1],0])
+
+    for i in range(len(points)):
+        p1,p2 = points[i-1], points[i]
+        Q = cross(cross(p1+[1],p2+[1]),crosss)
+
+        if Q[2] != 0:
+            if (Q[0]/Q[2]-P[0]) > 0 or (Q[1]/Q[2]-P[1]) > 0: # comparissons are only acurate for a line with Vx, Vy both positive
+                if min(p1[0],p2[0]) < Q[0]/Q[2] < max(p1[0],p2[0]) or min(p1[1],p2[1]) < Q[1]/Q[2] < max(p1[1],p2[1]):
+                    crossings += 1
+            
+            elif Q[0]-P[0]*Q[2] == 0 and Q[1]-P[1]*Q[2] == 0:
+                if min(p1[0],p2[0]) < Q[0]/Q[2] < max(p1[0],p2[0]) or min(p1[1],p2[1]) < Q[1]/Q[2] < max(p1[1],p2[1]):
+                    return 2
+        
+    return crossings%2
