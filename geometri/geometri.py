@@ -68,7 +68,7 @@ def perimeter(points):
     return summ
 
 def point_in_polygon(P, points):# 0 -> outside, 1 -> inside, 2 -> on the edge
-    import math        
+    import math     # based on https://math.stackexchange.com/questions/2460414/how-to-determine-if-a-ray-intersects-a-line   
 
     def pts2line(p, q):
         return (-q[1] + p[1],

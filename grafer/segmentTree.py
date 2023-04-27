@@ -79,3 +79,33 @@ class SegmentTree:
             return self.query(k.start, k.stop - 1)
         elif type(k) == int:
             return self.query(k, k)
+        
+class segment:
+    def __init__(self, arr):
+        self.n = 1
+        while self.n < arr: self.n *= 2
+        self.tree = [0]*(self.n*2)
+
+    def add(self, k, x):
+        k += self.n
+        self.tree[k]^=x
+        k //= 2
+        while k >= 1:
+            self.tree[k] = self.tree[k*2]^self.tree[2*k+1]
+            k //= 2
+        
+    def quarry(self, a, b):
+        a += self.n
+        b += self.n
+        s = 0
+        while a <= b:
+            if a%2==1:
+                s^=self.tree[a]
+                a += 1
+            if b%2==0:
+                s^=self.tree[b]
+                b -= 1
+            a//=2
+            b//=2
+        return s
+    
