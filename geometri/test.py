@@ -1,5 +1,5 @@
 # representerar en linje i a,b,c
-import math
+import math, time
 
 
 #def linje(p1,p2):
@@ -57,6 +57,7 @@ def polygonArea(points):
     return math.fabs(summ) / 2
 
 def perimeter(points): # returns the length of the perimiter of a polygon
+    t1 = time.time_ns()
     import math
     if len(points) < 3:
         return 0
@@ -65,6 +66,7 @@ def perimeter(points): # returns the length of the perimiter of a polygon
     for p in points:
         summ += math.sqrt(math.pow(pre[0]-p[0],2)+math.pow(pre[1]-p[1],2))
         pre = p
+    print(time.time_ns() - t1)
     return summ
 
 def point_in_polygon(P, points):# 0 -> outside, 1 -> inside, 2 -> on the edge
@@ -110,3 +112,7 @@ def point_in_polygon(P, points):# 0 -> outside, 1 -> inside, 2 -> on the edge
                     return 2
         
     return crossings%2
+
+_,P = input()
+points = [[float(p) for p in input().split("# ")[1].split()] for _ in range(P)]
+perimeter(points)

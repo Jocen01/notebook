@@ -62,7 +62,11 @@ class Sat:
         return V
 
 if __name__ == '__main__':
-    S = Sat(1)
-    S.add_or(0, 0)
+    S = Sat(5)
+    S.add_xor(2*2,3*2)
+    S.add_eq(0,1*2)
+    #S.add_eq(0,1)
+    #S.add_eq(0,2)
+    #S.add_eq(1,3)
     print(S.is_sat())
     print(S.solution())

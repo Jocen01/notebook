@@ -40,3 +40,19 @@ def bfs2(grid, r, c):
 
 
 grid = {}
+
+
+def bfs(Graph, S):
+    q = [S]
+    dist = {S: 0}
+    while q:
+        q2 = []
+        for u in q:
+            for v in Graph[u]:
+                if v not in dist:
+                    dist[v] = (dist[u] + 1)%2
+                    q2.append(v)
+                else:
+                    assert dist[v] != dist[u]
+        q = q2
+    return dist
