@@ -1,18 +1,19 @@
-# notebook
-collection of algoritms for competative programing
+# Notebook
+Collection of algoritms for competative programing implemented mostly in python. With exeption to Closest pair which is in rust and KMP wich is in C++. 
+Everything in python is implemented as stand alone methods or classes which can be copied in to a problem without extra imports.
 
-*** Datastructures ***
+## Datastructures 
 * Fenwic Tree
 * Fegment Tree
 * RMQ 
 
-*** Geometry ***  
-* Closest Pair - rust
+## Geometry   
+* Closest Pair - Rust
 * Convex Hull
 * Polygon Area
 * Point In Polygon
 
-*** Graph ***
+## Graph 
 * 2-Sat
 * BFS
 * DAG
@@ -21,12 +22,12 @@ collection of algoritms for competative programing
 * MST, Kruskal union-find
 * Strongly Connected Components, kosaraju
 
-*** Math *** 
+## Math  
 * Miller–Rabin primality test
 * Primesive
 * GCD
 * FFT
 
-*** Strings ***
-* KMP
+## Strings 
+* KMP - C++
 * Suffix Array
