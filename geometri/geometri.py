@@ -13,13 +13,6 @@ def pts2line(p, q):
           q[0] - p[0],
           p[0]*q[1] - p[1]*q[0])
 
-#GCD
-def GCD(a, b):
-    if(b == 0):
-        return abs(a)
-    else:
-        return GCD(b, a % b)
-
 def dist(p1,p2):
     return math.sqrt(math.pow(p1[1]-p2[1],2)+math.pow(p1[0]-p2[0],2))
 
