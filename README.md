@@ -1,9 +1,9 @@
 # Notebook
-Collection of algoritms for competative programing implemented mostly in python. With exeption to Closest pair which is in rust and KMP wich is in C++. 
-Everything in python is implemented as stand alone methods or classes which can be copied in to a problem without extra imports.
+Collection of algorithms for competitive programming implemented mostly in Python. With exception to Closest pair which is in Rust and KMP wich is in C++. 
+Everything in Python is implemented as stand alone methods or classes which can be copied in to a problem without extra imports.
 
 ## Datastructures 
-* Fenwic Tree
+* Fenwick Tree
 * Segment Tree
 * RMQ 
 
@@ -18,7 +18,7 @@ Everything in python is implemented as stand alone methods or classes which can 
 * BFS
 * DAG
 * Min-Max Flow
-* Dijikstras
+* Djikstras
 * MST, Kruskal union-find
 * Strongly Connected Components, kosaraju
 
