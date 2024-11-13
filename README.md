@@ -4,7 +4,7 @@ Everything in python is implemented as stand alone methods or classes which can 
 
 ## Datastructures 
 * Fenwic Tree
-* Fegment Tree
+* Segment Tree
 * RMQ 
 
 ## Geometry   
