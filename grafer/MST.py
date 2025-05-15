@@ -26,6 +26,7 @@ def find(v,parent):
 def union(u, v, parent, children):
     u = find(u, parent)
     v = find(v, parent)
+    if u == v: return
     if children[u] < children[v]:
         parent[u] = v
         children[v] = children[v] + children[u]
