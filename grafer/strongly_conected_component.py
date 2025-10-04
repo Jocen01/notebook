@@ -1,5 +1,6 @@
 
 def kosaraju(adj):
+    # Strongly connected componets, SCC
     n = len(adj)
     scc = []
     part_of = [0] * n
